@@ -1,0 +1,3 @@
+ok=(()=>{
+alerta ("Deu certo")
+})
