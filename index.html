@@ -1,0 +1,92 @@
+<style>
+
+#v{
+    position: fixed;
+    width:30%;
+    border:solid 0px red;
+bottom: 1%;
+margin-left: 40%;
+}
+button{
+border: solid 2px black;
+width: 100;
+font-size:xx-large;
+background-color:gold;
+color:black;
+}
+</style>
+<body >
+
+<center>
+ <button id="btn" onclick="oi()"> Teste
+ </button>
+<hr>
+
+<b id="txt">
+</b>
+
+</center>
+
+<video id="v" autoplay muted>
+</video>
+
+
+</body>
+<script>
+    ///////funções pode ser acionadas por "functio" ou por "=(()=>{ }" 
+//////variavel "data" recebe "new Date()", onde podemos buscar horarios, dia, mes e anos !!
+///////montei variaveis "horas, minutos, segundos", para armazenar uns valores do horario local
+/////// fiz um "if" caso a variavel receber um numero menor que 10, ele acrecentara um 0 na frente desse numero !!!!!
+/////// funnção "dt()", escreve na tag de escrita "b", as variaveis citadas globalmente....
+/////// o parametro "setTimeout()" , cuida de atualizar as variaveis, acada 1 segundo
+
+
+
+data=new Date()
+horas=data.getHours()
+minutos=data.getMinutes()
+segundos=data.getSeconds()
+
+if(horas<10){
+horas="0"+horas
+}
+if(minutos<10){
+    minutos="0"+minutos
+}
+if(segundos<10){
+    segundos="0"+segundos
+}
+
+oi=(()=>{
+dioclecio=prompt("Oi Dioclecio !! \n tudo que vc escrever aqui, sera escrito em baixo \n escreva por exemplo: oi ou horas")
+
+if(dioclecio=="oi"){
+espelho()
+
+}
+
+if(dioclecio=="horas"){
+dt()
+
+}
+txt.innerText=dioclecio
+})
+
+
+dt=(()=>{
+    txt.innerText=horas+":"+minutos+":"+segundos
+setTimeout(dt)
+})
+
+espelho=(()=>{
+navigator.mediaDevices.getUserMedia({
+video:true,
+audio:true
+}).then((stre)=>{
+    v.srcObject=stre
+})
+v.controls=true
+v.muted=false
+})
+
+</script>
